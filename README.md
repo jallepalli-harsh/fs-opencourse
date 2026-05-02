@@ -9,7 +9,7 @@ This repository contains my solutions to the exercises for the [Full Stack Open]
 <!--⚪ Not Started-->
 | Part | Topic | Status | Exercises |
 | :--- | :--- | :---: | :---: |
-| [Part 0](https://fullstackopen.com/en/part0) | Fundamentals of Web Apps | 🟡 In Progress | [Link](./part0) |
+| [Part 0](https://fullstackopen.com/en/part0) | Fundamentals of Web Apps | 🟡 In Progress | [Link](./part-0) |
 | [Part 1](https://fullstackopen.com) | Introduction to React | ⚪ Not Started| [Link](./part1) |
 | [Part 2](https://fullstackopen.com) | Communicating with Server | ⚪ Not Started | [Link](./part2) |
 | [Part 3](https://fullstackopen.com) | Programming a Server with NodeJS and Express | ⚪ Not Started | [Link](./part3) |

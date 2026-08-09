@@ -9,9 +9,12 @@ const Button = ({ text, onClick }) => (
 );
 
 const StatisticLine = ({ text, value, isPercentage = false }) => (
-  <p>
-    {text}: {value} {isPercentage ? "%" : ""}
-  </p>
+  <tr>
+    <td>{text}</td>
+    <td>
+      {value} {isPercentage ? "%" : ""}
+    </td>
+  </tr>
 );
 
 const Statistics = ({ goodCount, neutralCount, badCount }) => {
@@ -26,14 +29,20 @@ const Statistics = ({ goodCount, neutralCount, badCount }) => {
     <>
       <Header text="statistics" />
       {hasFeedbackBeenProvided ? (
-        <div>
-          <StatisticLine text="good" value={goodCount} />
-          <StatisticLine text="bad" value={badCount} />
-          <StatisticLine text="neutral" value={neutralCount} />
-          <StatisticLine text="all" value={totalCount} />
-          <StatisticLine text="average" value={average} />
-          <StatisticLine text="positive" value={positive} isPercentage={true} />
-        </div>
+        <table>
+          <tbody>
+            <StatisticLine text="good" value={goodCount} />
+            <StatisticLine text="bad" value={badCount} />
+            <StatisticLine text="neutral" value={neutralCount} />
+            <StatisticLine text="all" value={totalCount} />
+            <StatisticLine text="average" value={average} />
+            <StatisticLine
+              text="positive"
+              value={positive}
+              isPercentage={true}
+            />
+          </tbody>
+        </table>
       ) : (
         <p>No feedback given</p>
       )}

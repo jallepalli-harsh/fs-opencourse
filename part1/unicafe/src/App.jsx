@@ -19,6 +19,10 @@ function App() {
 
   const incrementBadCountByOne = () => setBadCount((p) => p + 1);
 
+  const totalCount = goodCount + badCount + neutralCount;
+  const average = (goodCount - badCount) / (totalCount || 1);
+  const positive = (goodCount / (totalCount || 1)) * 100;
+
   return (
     <>
       <Header text="give feedback" />
@@ -30,6 +34,9 @@ function App() {
         <p>good: {goodCount}</p>
         <p>neutral: {neutralCount}</p>
         <p>bad: {badCount}</p>
+        <p>all: {totalCount}</p>
+        <p>average: {average}</p>
+        <p>positive: {positive} %</p>
       </div>
     </>
   );

@@ -13,17 +13,24 @@ const Statistics = ({ goodCount, neutralCount, badCount }) => {
   const average = (goodCount - badCount) / (totalCount || 1);
   const positive = (goodCount / (totalCount || 1)) * 100;
 
+  const hasFeedbackBeenProvided =
+    goodCount !== 0 || badCount !== 0 || neutralCount !== 0;
+
   return (
     <>
       <Header text="statistics" />
-      <div>
-        <p>good: {goodCount}</p>
-        <p>neutral: {neutralCount}</p>
-        <p>bad: {badCount}</p>
-        <p>all: {totalCount}</p>
-        <p>average: {average}</p>
-        <p>positive: {positive} %</p>
-      </div>
+      {hasFeedbackBeenProvided ? (
+        <div>
+          <p>good: {goodCount}</p>
+          <p>neutral: {neutralCount}</p>
+          <p>bad: {badCount}</p>
+          <p>all: {totalCount}</p>
+          <p>average: {average}</p>
+          <p>positive: {positive} %</p>
+        </div>
+      ) : (
+        <p>No feedback given</p>
+      )}
     </>
   );
 };

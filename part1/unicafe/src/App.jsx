@@ -8,6 +8,12 @@ const Button = ({ text, onClick }) => (
   </button>
 );
 
+const StatisticLine = ({ text, value, isPercentage = false }) => (
+  <p>
+    {text}: {value} {isPercentage ? "%" : ""}
+  </p>
+);
+
 const Statistics = ({ goodCount, neutralCount, badCount }) => {
   const totalCount = goodCount + badCount + neutralCount;
   const average = (goodCount - badCount) / (totalCount || 1);
@@ -21,12 +27,12 @@ const Statistics = ({ goodCount, neutralCount, badCount }) => {
       <Header text="statistics" />
       {hasFeedbackBeenProvided ? (
         <div>
-          <p>good: {goodCount}</p>
-          <p>neutral: {neutralCount}</p>
-          <p>bad: {badCount}</p>
-          <p>all: {totalCount}</p>
-          <p>average: {average}</p>
-          <p>positive: {positive} %</p>
+          <StatisticLine text="good" value={goodCount} />
+          <StatisticLine text="bad" value={badCount} />
+          <StatisticLine text="neutral" value={neutralCount} />
+          <StatisticLine text="all" value={totalCount} />
+          <StatisticLine text="average" value={average} />
+          <StatisticLine text="positive" value={positive} isPercentage={true} />
         </div>
       ) : (
         <p>No feedback given</p>

@@ -19,12 +19,23 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
   const [votesCount, setVotesCount] = useState(initialVotesCount);
+  const [mostVotedAnecdote, setMostVotedAnecdote] = useState(-1);
 
   const getRandomQuote = () => setSelected(getRandomInt(anecdotes.length));
   const updateVoteCount = () => {
-    const votesCopy = [...votesCount];
-    votesCopy[selected] += 1;
+    const votesCopy = votesCount.map((votes, idx) =>
+      idx === selected ? votes + 1 : votes,
+    );
+
+    const maxVotedAnecdoteIdx = votesCopy.reduce(
+      (maxIdx, currentVote, currentIdx, arr) => {
+        return currentVote >= arr[maxIdx] ? currentIdx : maxIdx;
+      },
+      0,
+    );
+
     setVotesCount(votesCopy);
+    setMostVotedAnecdote(maxVotedAnecdoteIdx);
   };
 
   return (
@@ -34,6 +45,14 @@ const App = () => {
       <p>has {votesCount[selected]} votes</p>
       <button onClick={updateVoteCount}>vote</button>
       <button onClick={getRandomQuote}>next anecdote</button>
+
+      {mostVotedAnecdote >= 0 && (
+        <>
+          <h2>Anecdote with most votes</h2>
+          <p>{anecdotes[mostVotedAnecdote]}</p>
+          <p>has {votesCount[mostVotedAnecdote]} votes</p>
+        </>
+      )}
     </div>
   );
 };
